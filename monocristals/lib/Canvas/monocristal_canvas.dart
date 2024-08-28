@@ -4,13 +4,13 @@ import 'package:monocristals/Canvas/paint.dart';
 import 'dart:async';
 
 import '../Floating settings/floating_buttons.dart';
-import '../function.dart';
+import '../cristalls/function.dart';
 
 class CustomCanvas extends StatelessWidget {
-  final OvalLine cristal;
+  final List<OvalLine> cristals;
   final ui.Image? bgImage;
 
-  const CustomCanvas({required this.cristal, this.bgImage});
+  const CustomCanvas({required this.cristals, this.bgImage});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class CustomCanvas extends StatelessWidget {
       body: Stack(
         children: [
           CustomPaint(
-            painter: MyPainter(cristal, bgImage),
+            painter: MyPainter(cristals, bgImage),
             child: Container(),
           ),
           FloatingButtons(),

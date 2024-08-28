@@ -15,18 +15,18 @@ class SaveFloatingButton extends StatelessWidget {
       onPressed: () {
         // Convert the Vault values to a JSON string
         String json = jsonEncode({
-          'd_110': Vault.d_110.value,
-          'i': Vault.i.value,
-          'l_0': Vault.l_0.value,
-          'fi': Vault.fi.value,
-          'velL_velR': Vault.velL_velR.value,
-          'b': Vault.b.value,
-          'angle': Vault.angle.value,
-          'imRotate': Vault.imRotate.value,
-          'imScale': Vault.imScale.value,
-          'imX': Vault.imX.value,
-          'imY': Vault.imY.value,
-          'scale': Vault.scale.value,
+          // 'd_110': Vault.d_110.value,
+          // 'i': Vault.i.value,
+          // 'l_0': Vault.l_0.value,
+          // 'fi': Vault.fi.value,
+          // 'velL_velR': Vault.velL_velR.value,
+          // 'b': Vault.b.value,
+          // 'angle': Vault.angle.value,
+          // 'imRotate': Vault.imRotate.value,
+          // 'imScale': Vault.imScale.value,
+          // 'imX': Vault.imX.value,
+          // 'imY': Vault.imY.value,
+          // 'scale': Vault.scale.value,
         });
 
         // Create a Blob from the JSON string

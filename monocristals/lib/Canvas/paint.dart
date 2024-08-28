@@ -6,7 +6,7 @@ import 'package:monocristals/cristalls/pe_cristal.dart';
 
 import 'package:flutter/services.dart';
 
-import '../function.dart';
+import '../cristalls/function.dart';
 import 'axes.dart';
 
 GlobalKey key = GlobalKey();
@@ -18,10 +18,10 @@ Paint circlePaint = Paint()
   ..strokeCap = StrokeCap.round;
 
 class MyPainter extends CustomPainter {
-  final OvalLine cristal;
+  final List<OvalLine> cristals;
   final ui.Image? bgImage;
 
-  MyPainter(this.cristal, this.bgImage);
+  MyPainter(this.cristals, this.bgImage);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -35,7 +35,9 @@ class MyPainter extends CustomPainter {
 
     drawAxes(canvas, size, circlePaint); // axes
 
-    cristal.draw(canvas, size, circlePaint); // pe
+    for (OvalLine c in cristals) {
+      c.draw(canvas, size, circlePaint); // cristal
+    }// pe
   }
 
   @override

@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import '../function.dart';
+import 'function.dart';
 import '../vault.dart';
 
 class PEcristal extends OvalLine{
@@ -19,7 +19,7 @@ class PEcristal extends OvalLine{
       ..color = Colors.grey[800]!
       ..style = PaintingStyle.stroke;
 
-    canvas.rotate(Vault.angle.value / 2);
+    canvas.rotate(PEVault.angle.value / 2);
     canvas.drawLine(
         Offset(-300, 0),
         Offset(300, 0),
@@ -28,15 +28,15 @@ class PEcristal extends OvalLine{
     canvas.rotate(pi);
     canvas.drawPath(path, circlePaint);
     canvas.rotate(-pi);
-    canvas.rotate(-Vault.angle.value / 2);
+    canvas.rotate(-PEVault.angle.value / 2);
     canvas.scale(1, -1);
-    canvas.rotate(Vault.angle.value / 2);
+    canvas.rotate(PEVault.angle.value / 2);
     canvas.drawLine(Offset(-300, 0), Offset(300, 0), circlePaint);
     canvas.drawPath(path, circlePaint);
     canvas.rotate(pi);
     canvas.drawPath(path, circlePaint);
     canvas.rotate(-pi);
-    canvas.rotate(-Vault.angle.value / 2);
+    canvas.rotate(-PEVault.angle.value / 2);
     canvas.scale(1, -1);
     super.draw(canvas, size, circlePaint);
   }

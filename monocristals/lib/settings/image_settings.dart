@@ -20,17 +20,28 @@ class ImageSettings extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       child: Column(
         children: [
-          Container(
-            padding: EdgeInsets.only(left: 5, right: 0, top: 0, bottom: 10),
-            child: const Align(
-              alignment: Alignment.centerLeft,
-              child: Text("Настройки изображения",
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w300),
-                  textAlign: TextAlign.left),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: 5, right: 0, top: 10, bottom: 10),
+                child: const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text("Настройки изображения",
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w300),
+                      textAlign: TextAlign.left),
+                ),
+              ),
+              IconButton(
+                icon: Icon(Icons.close, color: Colors.grey),
+                onPressed: () {
+                  Vault.bgImage.value = null; // Delete the image from the Vault
+                },
+              ),
+            ],
           ),
           SliderAndTextField(
               dataName: "Смещение по горизонтали",
