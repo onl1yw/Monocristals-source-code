@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:monocristals/settings/settings_box.dart';
 import 'package:monocristals/slider_and_textfield.dart';
 import 'package:monocristals/vault.dart';
 
@@ -11,52 +12,9 @@ class VenilCristalSettings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color(0xFFF5F5F5),
-        border: Border.all(
-          color: Colors.grey.shade700,
-          width: 2,
-        ),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      padding: const EdgeInsets.all(10.0),
-      child: Column(
+    return SettingsBox(
+        title: 'Поли 2 венил передин',
         children: [
-          Container(
-            padding: EdgeInsets.only(left: 5, right: 0, top: 10, bottom: 10),
-            child: const Text(
-              "Настройки параметров роста",
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.black,
-                fontWeight: FontWeight.w300,
-              ),
-              textAlign: TextAlign.left,
-              softWrap: true,
-            ),
-          ),
-          DropdownMenu<CristalType>(
-            menuStyle: MenuStyle(
-              visualDensity: VisualDensity.compact,
-            ),
-            inputDecorationTheme: const InputDecorationTheme(
-              isDense: true,
-              border: InputBorder.none,
-            ),
-            initialSelection: Vault.cristalType.value,
-            onSelected: (CristalType? newValue) {
-              if (newValue != null) {
-                Vault.cristalType.value = newValue;
-              }
-            },
-            dropdownMenuEntries: CristalType.values.map((CristalType type) {
-              return DropdownMenuEntry<CristalType>(
-                value: type,
-                label: getCristalTypeText(type),
-              );
-            }).toList(),
-          ),
           SliderAndTextField(
               dataName: "Масштаб кристалла",
               vaultKey: (value) {
@@ -107,7 +65,6 @@ class VenilCristalSettings extends StatelessWidget {
               min: -360,
               max: 360),
         ],
-      ),
     );
   }
 }
