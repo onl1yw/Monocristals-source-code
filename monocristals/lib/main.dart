@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:monocristals/Canvas/monocristal_canvas.dart';
 import 'package:monocristals/cristalls/pe_cristal.dart';
@@ -7,6 +9,7 @@ import 'package:monocristals/cristalls/function.dart';
 import 'dart:ui' as ui;
 
 import 'cristalls/poe_cristal.dart';
+import 'cristalls/test_cristal.dart';
 import 'cristalls/venil_cristal.dart';
 
 void main() {
@@ -38,7 +41,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<OvalLine> cristal = [];
+  List<Cristal> cristal = [];
   ui.Image? bgImage;
 
   @override
@@ -62,6 +65,8 @@ class _MyHomePageState extends State<MyHomePage> {
     PEVault.fi.addListener(_updateCanvas);
     PEVault.velL_velR.addListener(_updateCanvas);
     PEVault.b.addListener(_updateCanvas);
+    PEVault.angle
+        .addListener(_updateCanvas); // Added angle listener for PEcristal
 
     // Add listeners for POEcristal
     POEVault.d_110_10.addListener(_updateCanvas);
@@ -70,6 +75,8 @@ class _MyHomePageState extends State<MyHomePage> {
     POEVault.fi_10.addListener(_updateCanvas);
     POEVault.velL_velR_10.addListener(_updateCanvas);
     POEVault.b_10.addListener(_updateCanvas);
+    POEVault.angle
+        .addListener(_updateCanvas); // Added angle listener for POEcristal
 
     POEVault.d_110_12.addListener(_updateCanvas);
     POEVault.i_12.addListener(_updateCanvas);
@@ -77,6 +84,8 @@ class _MyHomePageState extends State<MyHomePage> {
     POEVault.fi_12.addListener(_updateCanvas);
     POEVault.velL_velR_12.addListener(_updateCanvas);
     POEVault.b_12.addListener(_updateCanvas);
+    POEVault.angle
+        .addListener(_updateCanvas); // Added angle listener for POEcristal
 
     // Add listeners for Venilcristal
     VenilVault.d_110.addListener(_updateCanvas);
@@ -85,6 +94,8 @@ class _MyHomePageState extends State<MyHomePage> {
     VenilVault.fi.addListener(_updateCanvas);
     VenilVault.velL_velR.addListener(_updateCanvas);
     VenilVault.b.addListener(_updateCanvas);
+    VenilVault.angle
+        .addListener(_updateCanvas); // Added angle listener for Venilcristal
   }
 
   void _updateCanvas() {
@@ -92,14 +103,17 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() {
         switch (Vault.cristalType.value) {
           case CristalType.PE:
-            cristal = [PEcristal(
-              PEVault.d_110.value,
-              PEVault.i.value,
-              PEVault.l_0.value,
-              PEVault.fi.value,
-              PEVault.velL_velR.value,
-              PEVault.b.value,
-            )];
+            cristal = [
+              PEcristal(
+                PEVault.d_110.value,
+                PEVault.i.value,
+                PEVault.l_0.value,
+                PEVault.fi.value,
+                PEVault.velL_velR.value,
+                PEVault.b.value,
+                PEVault.angle.value,
+              )
+            ];
             break;
           case CristalType.POE:
             cristal = [
@@ -110,6 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 POEVault.fi_10.value,
                 POEVault.velL_velR_10.value,
                 POEVault.b_10.value,
+                POEVault.angle.value,
               ),
               POEcristal120(
                 POEVault.d_110_12.value,
@@ -118,18 +133,35 @@ class _MyHomePageState extends State<MyHomePage> {
                 POEVault.fi_12.value,
                 POEVault.velL_velR_12.value,
                 POEVault.b_12.value,
+                pi / 2,
               ),
             ];
             break;
           case CristalType.VENIL:
-            cristal = [Venilcristal(
-              VenilVault.d_110.value,
-              VenilVault.i.value,
-              VenilVault.l_0.value,
-              VenilVault.fi.value,
-              VenilVault.velL_velR.value,
-              VenilVault.b.value,
-            )];
+            cristal = [
+              Venilcristal(
+                VenilVault.d_110.value,
+                VenilVault.i.value,
+                VenilVault.l_0.value,
+                VenilVault.fi.value,
+                VenilVault.velL_velR.value,
+                VenilVault.b.value,
+                VenilVault.angle.value,
+              )
+            ];
+            break;
+          case CristalType.TEST:
+            cristal = [
+              TestCristal(
+                TestVault.d_110.value,
+                TestVault.i.value,
+                TestVault.l_0.value,
+                TestVault.fi.value,
+                TestVault.velL_velR.value,
+                TestVault.b.value,
+                TestVault.angle.value,
+              )
+            ];
             break;
         }
         bgImage = Vault.bgImage.value;
@@ -171,7 +203,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     Expanded(flex: 1, child: MySettings()),
                     Expanded(
                         flex: 2,
-                        child: CustomCanvas(cristals: cristal, bgImage: bgImage)),
+                        child:
+                            CustomCanvas(cristals: cristal, bgImage: bgImage)),
                   ],
                 ),
               ),

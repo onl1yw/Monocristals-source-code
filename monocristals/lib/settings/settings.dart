@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:monocristals/settings/pe_cristal_settings.dart';
 import 'package:monocristals/settings/poe_cristal_settings.dart';
 import 'package:monocristals/settings/image_settings.dart';
+import 'package:monocristals/settings/test_cristal_settings.dart';
 import 'package:monocristals/settings/venil_cristal_settings.dart';
 import 'package:monocristals/vault.dart';
 
@@ -39,8 +40,8 @@ class MySettingsState extends State<MySettings> {
               ),
               padding: const EdgeInsets.all(10.0),
               child: Container(
-                padding: const EdgeInsets.only(
-                    left: 0, right: 0, top: 5, bottom: 5),
+                padding:
+                    const EdgeInsets.only(left: 0, right: 0, top: 5, bottom: 5),
                 child: Wrap(
                   runSpacing: 10,
                   crossAxisAlignment: WrapCrossAlignment.center,
@@ -58,7 +59,7 @@ class MySettingsState extends State<MySettings> {
                     ),
                     const SizedBox(width: 7, height: 7),
                     DropdownChip(
-                      values: ['PE', 'POE', 'poly-(2-vynilpyridine)'],
+                      values: ['PE', 'POE', 'poly-(2-vynilpyridine)'/*, 'Test'*/],
                       initialValue: 'PE',
                       onSelected: (value) {
                         CristalType selectedType;
@@ -72,6 +73,9 @@ class MySettingsState extends State<MySettings> {
                           case 'poly-(2-vynilpyridine)':
                             selectedType = CristalType.VENIL;
                             break;
+                          // case 'Test':
+                          //   selectedType = CristalType.TEST;
+                          //   break;
                           default:
                             selectedType = CristalType.PE;
                         }
@@ -93,6 +97,8 @@ class MySettingsState extends State<MySettings> {
                     return const POECristalSettings();
                   case CristalType.VENIL:
                     return const VenilCristalSettings();
+                  case CristalType.TEST:
+                    return const TestCristalSettings();
                   default:
                     return const SizedBox.shrink();
                 }

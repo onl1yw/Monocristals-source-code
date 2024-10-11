@@ -37,11 +37,13 @@ class _RatioSliderState extends State<RatioSlider> {
   void initState() {
     super.initState();
     _controller1 = TextEditingController();
-    _sliderValue1 = widget.initialValue1; // Use the initial value from the widget
+    _sliderValue1 =
+        widget.initialValue1; // Use the initial value from the widget
     _controller1.text = _sliderValue1.toStringAsFixed(2);
 
     _controller2 = TextEditingController();
-    _sliderValue2 = widget.initialValue2; // Use the initial value from the widget
+    _sliderValue2 =
+        widget.initialValue2; // Use the initial value from the widget
     _controller2.text = _sliderValue2.toStringAsFixed(2);
 
     _updateQuotient();
@@ -158,10 +160,14 @@ class _RatioSliderState extends State<RatioSlider> {
               ),
               const Divider(
                 color: Colors.grey,
-                height: 10, // Adjust this to change the space between the divider and the surrounding widgets
-                thickness: 2, // Adjust this to change the thickness of the divider
-                indent: 20, // Adjust this to change the left-side length of the divider
-                endIndent: 20, // Adjust this to change the right-side length of the divider
+                height:
+                    10, // Adjust this to change the space between the divider and the surrounding widgets
+                thickness:
+                    2, // Adjust this to change the thickness of the divider
+                indent:
+                    20, // Adjust this to change the left-side length of the divider
+                endIndent:
+                    20, // Adjust this to change the right-side length of the divider
               ),
               Row(
                 children: [
@@ -175,9 +181,9 @@ class _RatioSliderState extends State<RatioSlider> {
                           data: SliderThemeData(
                             thumbColor: Colors.grey[700],
                             thumbShape:
-                            RoundSliderThumbShape(enabledThumbRadius: 10),
+                                RoundSliderThumbShape(enabledThumbRadius: 10),
                             overlayShape:
-                            RoundSliderOverlayShape(overlayRadius: 0),
+                                RoundSliderOverlayShape(overlayRadius: 0),
                           ),
                           child: Slider(
                             value: _sliderValue2,

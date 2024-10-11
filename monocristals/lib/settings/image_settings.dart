@@ -24,7 +24,8 @@ class ImageSettings extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                padding: EdgeInsets.only(left: 5, right: 0, top: 10, bottom: 10),
+                padding:
+                    EdgeInsets.only(left: 5, right: 0, top: 10, bottom: 10),
                 child: const Align(
                   alignment: Alignment.centerLeft,
                   child: Text("Настройки изображения",

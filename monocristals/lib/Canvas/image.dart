@@ -3,13 +3,12 @@ import 'dart:ui';
 
 import '../vault.dart';
 
-void drawImage(Canvas canvas, Size size, Image image){
+void drawImage(Canvas canvas, Size size, Image image) {
   final bgImage = Vault.bgImage.value; // Get the image from the Vault class
 
   if (bgImage != null) {
     // Calculate the aspect ratio for the source and destination rectangles
-    final srcSize =
-    Size(bgImage.width.toDouble(), bgImage.height.toDouble());
+    final srcSize = Size(bgImage.width.toDouble(), bgImage.height.toDouble());
     final srcRect = Offset.zero & srcSize;
 
     // Calculate the scale factors for width and height
@@ -22,8 +21,8 @@ void drawImage(Canvas canvas, Size size, Image image){
     // Calculate the destination size and rectangle
     final dstSize = srcSize * scale;
     final dstRect = Offset((size.width - dstSize.width) / 2,
-        (size.height - dstSize.height) / 2) &
-    dstSize;
+            (size.height - dstSize.height) / 2) &
+        dstSize;
 
     // Draw the image scaled to fit within the destination rectangle, while maintaining its aspect ratio
     canvas.save();

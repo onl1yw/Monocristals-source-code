@@ -15,20 +15,20 @@ class PECristalSettings extends StatelessWidget {
     return SettingsBox(
       title: "Плоскость роста 110",
       children: [
-        SliderAndTextField(
-            dataName: "Угл между плоскостями",
-            vaultKey: (value) => PEVault.angle.value = (value / 180) * pi,
-            initialValue: 60,
-            min: 0,
-            max: 180),
+        // SliderAndTextField(
+        //     dataName: "Угл между плоскостями",
+        //     vaultKey: (value) => PEVault.angle.value = (value / 180) * pi,
+        //     initialValue: PEVault.angle.value,
+        //     min: 0,
+        //     max: 180),
         SliderAndTextField(
             dataName: "Масштаб кристалла",
             vaultKey: (value) {
               Vault.scale.value = value;
-              OvalLine.scale =
+              Cristal.scale =
                   value; // Update the scale value in the OvalLine class
             },
-            initialValue: 200,
+            initialValue: Vault.scale.value,
             min: 1,
             max: 500),
         RatioSlider(
@@ -36,40 +36,40 @@ class PECristalSettings extends StatelessWidget {
             max1: 10,
             min2: 0,
             max2: 10,
-            initialValue1: 1,
+            initialValue1: PEVault.velL_velR.value,
             initialValue2: 1,
             dataName: "Скорость роста влево / вправо",
             vaultKey: (value) => PEVault.velL_velR.value = value),
-        SliderAndTextField(
-            dataName: "Коэфицент b",
-            vaultKey: (value) => PEVault.b.value = value,
-            initialValue: 2.5,
-            min: 0,
-            max: 10),
+        // SliderAndTextField(
+        //     dataName: "Коэфицент b",
+        //     vaultKey: (value) => PEVault.b.value = value,
+        //     initialValue: 2.5,
+        //     min: 0,
+        //     max: 10),
         SliderAndTextField(
             dataName: "Коэфицент i",
             vaultKey: (value) => PEVault.i.value = value,
-            initialValue: 0.5,
+            initialValue: PEVault.i.value,
             min: 0,
             max: 1),
         SliderAndTextField(
             dataName: "Коэфицент d_110",
             vaultKey: (value) => PEVault.d_110.value = value,
-            initialValue: 0.5,
+            initialValue: PEVault.d_110.value,
             min: 0,
             max: 1),
-        SliderAndTextField(
-            dataName: "Коэфицент l_0",
-            vaultKey: (value) => PEVault.l_0.value = value,
-            initialValue: 5,
-            min: 0,
-            max: 10),
-        SliderAndTextField(
-            dataName: "Угл fi",
-            initialValue: 100,
-            vaultKey: (value) => PEVault.fi.value = (value / 180) * pi,
-            min: -360,
-            max: 360),
+        // SliderAndTextField(
+        //     dataName: "Коэфицент l_0",
+        //     vaultKey: (value) => PEVault.l_0.value = value,
+        //     initialValue: 5,
+        //     min: 0,
+        //     max: 10),
+        // SliderAndTextField(
+        //     dataName: "Угл fi",
+        //     initialValue: 100,
+        //     vaultKey: (value) => PEVault.fi.value = (value / 180) * pi,
+        //     min: -360,
+        //     max: 360),
       ],
     );
   }

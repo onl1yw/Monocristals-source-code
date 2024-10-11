@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:monocristals/Floating%20settings/save.dart';
 import 'package:monocristals/Floating%20settings/image.dart';
 
+import 'memo.dart';
+
 class FloatingButtons extends StatelessWidget {
   FloatingButtons();
 
@@ -16,6 +18,8 @@ class FloatingButtons extends StatelessWidget {
           SaveFloatingButton(),
           const SizedBox(width: 5),
           ImageFloatingButton(),
+          const SizedBox(width: 5),
+          MemoFloatingButton(),
         ],
       ),
     );

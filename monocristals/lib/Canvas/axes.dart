@@ -9,10 +9,7 @@ void drawAxes(Canvas canvas, Size size, Paint circlePaint) {
     ..blendMode = BlendMode.srcOver
     ..color = Colors.grey[300]!
     ..style = PaintingStyle.fill;
-  canvas.drawCircle(
-      const Offset(0, 0),
-      3,
-      circlePaint);
+  canvas.drawCircle(const Offset(0, 0), 3, circlePaint);
 // Calculate the length of the axes based on the size of the canvas
   final double axisLength = size.width * 0.8;
   final double axisHeight = size.height * 0.8;

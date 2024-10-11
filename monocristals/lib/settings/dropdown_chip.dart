@@ -32,13 +32,13 @@ class _DropdownChipState extends State<DropdownChip> {
     return Theme(
       data: Theme.of(context).copyWith(
         hintColor: Colors.transparent,
-        popupMenuTheme: PopupMenuThemeData(
-          color: Colors.transparent,
-          elevation: 0,
+        popupMenuTheme: const PopupMenuThemeData(
+          color: Colors.white,
+          elevation: 1,
         ),
-        splashColor: Colors.transparent, // <- Here
+        splashColor: Colors.grey[200], // <- Here
         highlightColor: Colors.transparent, // <- Here
-        hoverColor: Colors.transparent,
+        hoverColor: Colors.grey[200],
       ),
       child: PopupMenuButton<String>(
         onSelected: (value) {
@@ -47,6 +47,11 @@ class _DropdownChipState extends State<DropdownChip> {
           });
           widget.onSelected(value);
         },
+
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5),
+          side: const BorderSide(color: Colors.grey),
+        ),
 
         itemBuilder: (context) {
           return widget.values.map((value) {
@@ -88,7 +93,7 @@ class _DropdownChipState extends State<DropdownChip> {
             );
           }).toList();
         },
-        offset: Offset(-15, 20),
+        offset: Offset(0, 35),
         child: Container(
           height: 25,
           decoration: BoxDecoration(
@@ -106,7 +111,7 @@ class _DropdownChipState extends State<DropdownChip> {
           child: Theme(
             data: Theme.of(context).copyWith(
               chipTheme: const ChipThemeData(
-                backgroundColor: Colors.transparent,
+                backgroundColor: Colors.white,
                 shape: StadiumBorder(
                   side: BorderSide(color: Colors.grey),
                 ),

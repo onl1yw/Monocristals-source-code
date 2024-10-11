@@ -6,11 +6,18 @@ import 'package:monocristals/cristalls/function.dart';
 
 import '../vault.dart';
 
-class POEcristal120 extends OvalLine{
-  POEcristal120(super.d110, super.iMul, super.l, super.fi, super.velL_velR, super.b);
+class POEcristal120 extends Cristal {
+  POEcristal120(super.d110, super.iMul, super.l, super.fi, super.velL_velR,
+      super.b, super.angle);
   @override
   void draw(Canvas canvas, Size size, Paint circlePaint) {
-    Path path = super.getPath();
+    Path path = Path();
+    path.moveTo(0, 0);
+    super.getCleanPoints().forEach((element) {
+      path.lineTo(element.dx * Cristal.scale, element.dy * Cristal.scale);
+    });
+
+
 
     circlePaint = circlePaint
       ..strokeWidth = 2
@@ -18,19 +25,20 @@ class POEcristal120 extends OvalLine{
       ..color = Colors.grey[800]!
       ..style = PaintingStyle.stroke;
 
-    canvas.rotate(1/2 * pi);
+    canvas.rotate(1 / 2 * pi);
     canvas.drawPath(path, circlePaint);
     canvas.rotate(pi);
     canvas.drawPath(path, circlePaint);
     canvas.rotate(-pi);
-    canvas.rotate(-1/2 * pi);
+    canvas.rotate(-1 / 2 * pi);
 
     super.draw(canvas, size, circlePaint);
   }
 }
 
-class POEcristal100 extends OvalLine{
-  POEcristal100(super.d110, super.iMul, super.l, super.fi, super.velL_velR, super.b);
+class POEcristal100 extends Cristal {
+  POEcristal100(super.d110, super.iMul, super.l, super.fi, super.velL_velR,
+      super.b, super.angle);
   @override
   void draw(Canvas canvas, Size size, Paint circlePaint) {
     Path path = super.getPath();
@@ -42,10 +50,7 @@ class POEcristal100 extends OvalLine{
       ..style = PaintingStyle.stroke;
 
     canvas.rotate(POEVault.angle.value / 2);
-    canvas.drawLine(
-        Offset(-300, 0),
-        Offset(300, 0),
-        circlePaint);
+    canvas.drawLine(Offset(-300, 0), Offset(300, 0), circlePaint);
     canvas.drawPath(path, circlePaint);
     canvas.rotate(pi);
     canvas.drawPath(path, circlePaint);
@@ -64,5 +69,3 @@ class POEcristal100 extends OvalLine{
     super.draw(canvas, size, circlePaint);
   }
 }
-
-

@@ -33,7 +33,8 @@ class _SliderAndTextFieldState extends State<SliderAndTextField> {
     _sliderValue = widget.initialValue; // Use the initial value from the widget
     _controller.text = _sliderValue.toStringAsFixed(2);
 
-    widget.vaultKey(widget.initialValue);// Set the initial text of the TextEditingController
+    widget.vaultKey(widget
+        .initialValue); // Set the initial text of the TextEditingController
   }
 
   @override

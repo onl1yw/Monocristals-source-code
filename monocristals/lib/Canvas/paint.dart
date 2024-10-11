@@ -18,7 +18,7 @@ Paint circlePaint = Paint()
   ..strokeCap = StrokeCap.round;
 
 class MyPainter extends CustomPainter {
-  final List<OvalLine> cristals;
+  final List<Cristal> cristals;
   final ui.Image? bgImage;
 
   MyPainter(this.cristals, this.bgImage);
@@ -31,13 +31,14 @@ class MyPainter extends CustomPainter {
       drawImage(canvas, size, bgImage!); // bg image
     }
 
-    canvas.translate(size.width / 2, size.height / 2); //translates canvas to the center
+    canvas.translate(
+        size.width / 2, size.height / 2); //translates canvas to the center
 
     drawAxes(canvas, size, circlePaint); // axes
 
-    for (OvalLine c in cristals) {
+    for (Cristal c in cristals) {
       c.draw(canvas, size, circlePaint); // cristal
-    }// pe
+    } // pe
   }
 
   @override

@@ -7,7 +7,7 @@ import '../Floating settings/floating_buttons.dart';
 import '../cristalls/function.dart';
 
 class CustomCanvas extends StatelessWidget {
-  final List<OvalLine> cristals;
+  final List<Cristal> cristals;
   final ui.Image? bgImage;
 
   const CustomCanvas({required this.cristals, this.bgImage});

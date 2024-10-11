@@ -15,18 +15,32 @@ class SaveFloatingButton extends StatelessWidget {
       onPressed: () {
         // Convert the Vault values to a JSON string
         String json = jsonEncode({
-          // 'd_110': Vault.d_110.value,
-          // 'i': Vault.i.value,
-          // 'l_0': Vault.l_0.value,
-          // 'fi': Vault.fi.value,
-          // 'velL_velR': Vault.velL_velR.value,
-          // 'b': Vault.b.value,
-          // 'angle': Vault.angle.value,
-          // 'imRotate': Vault.imRotate.value,
-          // 'imScale': Vault.imScale.value,
-          // 'imX': Vault.imX.value,
-          // 'imY': Vault.imY.value,
-          // 'scale': Vault.scale.value,
+          '\n'
+          'PE cristal': {
+            'd_110': PEVault.d_110.value,
+            'i': PEVault.i.value,
+            'velL/velR': PEVault.velL_velR.value,
+          },
+          '\n'
+          'POE cristal': {
+            'Main fronts:': {
+              'd_110': POEVault.d_110_12.value,
+              'i': POEVault.i_12.value,
+              'velL/velR': POEVault.velL_velR_12.value,
+            },
+            'Support fronts:': {
+              'd_110': POEVault.d_110_10.value,
+              'i': POEVault.i_10.value,
+            },
+          },
+          '\n'
+          'Venil cristal': {
+            'd_110': VenilVault.d_110.value,
+            'i': VenilVault.i.value,
+            'l_0': VenilVault.l_0.value,
+            'velL/velR': VenilVault.velL_velR.value,
+            'b': VenilVault.b.value,
+          },
         });
 
         // Create a Blob from the JSON string
